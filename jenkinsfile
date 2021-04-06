@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        nodejs 'nodejs11-14'
+    }
     stages {
         stage('install package') {
             steps {
