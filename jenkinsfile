@@ -16,24 +16,24 @@ pipeline {
                 sh 'ls'
             }
         }
-    //     stage ('Publish Artifacts') {
-    //     steps {
-    //         rtUpload (
-    //             buildName: JOB_NAME,
-    //             buildNumber: BUILD_NUMBER,
-    //             serverId: "artifactory", // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
-    //             spec: """{
-    //                         "files": [
-    //                             {
-    //                                 "pattern": "target/my-app-1.0-SNAPSHOT.jar",
-    //                                 "target": "wajahat/my-app-1.0-SNAPSHOT.jar",
-    //                                 "recursive": "false"
-    //                             }
-    //                         ]
-    //                 }"""   
-    //             )
-    //     }
-    // }
+        stage ('Publish Artifacts') {
+        steps {
+            rtUpload (
+                buildName: JOB_NAME,
+                buildNumber: BUILD_NUMBER,
+                serverId: "artifactory", // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                spec: """{
+                            "files": [
+                                {
+                                    "pattern": "node-hello-linux",
+                                    "target": "gradle-local/node-hello-linux",
+                                    "recursive": "false"
+                                }
+                            ]
+                    }"""   
+                )
+        }
+    }
     //     stage ('pull artifact') {
     //     steps{
     //         rtDownload (
